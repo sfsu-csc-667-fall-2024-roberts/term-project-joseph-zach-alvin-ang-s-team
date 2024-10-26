@@ -13,7 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.7.9",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
@@ -31,6 +33,6 @@
     "nodemon": "^3.1.7"
   },
   "lint-staged": {
- "**/*": "prettier --write --ignore-unknown"
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
