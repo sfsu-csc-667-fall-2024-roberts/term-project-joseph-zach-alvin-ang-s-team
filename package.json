@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node team-qwirkle/server/index.ts",
     "start:dev": "nodemon --exec ts-node team-qwirkle/server/index.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build": "webpack build",
+    "build:dev": "webpack build --mode development --watch"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +19,14 @@
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.7.9",
+    "@types/webpack": "^5.28.5",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
@@ -30,7 +35,8 @@
     "express": "^5.0.1",
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "ts-loader": "^9.5.1"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
