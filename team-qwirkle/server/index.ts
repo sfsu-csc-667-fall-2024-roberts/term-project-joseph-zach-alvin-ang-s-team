@@ -11,16 +11,14 @@ const PORT = process.env.PORT || 3000;
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(process.cwd(), "team-qwirkle",
-"public")));
+app.use(express.static(path.join(process.cwd(), "src", "public")));
 app.use(cookieParser());
-app.set("views", path.join(process.cwd(), "team-qwirkle", "server",
-"views"));
+app.set("views", path.join(process.cwd(), "team-qwirkle", "server", "views"));
 app.set("view engine", "ejs");
 app.use("/", rootRoutes);
 app.use((_request, _response, next) => {
- next(httpErrors(404));
+  next(httpErrors(404));
 });
-app.listen(PORT, () => { 
- console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
