@@ -3,7 +3,7 @@ Link to repository:
     https://github.com/sfsu-csc-667-fall-2024-roberts/term-project-joseph-zach-alvin-ang-s-team/tree/main
 
 Link to Project Board: 
-    https://github.com/orgs/sfsu-csc-667-fall-2024-roberts/projects/3
+    https://github.com/orgs/sfsu-csc-667-fall-2024-roberts/projects/2
 
 Description:
 
