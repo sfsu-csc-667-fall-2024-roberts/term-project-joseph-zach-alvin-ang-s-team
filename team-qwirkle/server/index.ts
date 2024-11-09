@@ -43,5 +43,5 @@ if (process.env.MODES === "development") {
   });
   app.use(connectLiveReload());
 } else {
-  console.log("broken\n");
+  console.log("not in dev environment! pages will not auto update\n");
 }
