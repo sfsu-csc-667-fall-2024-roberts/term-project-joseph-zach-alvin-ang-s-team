@@ -25,6 +25,7 @@ Description:
     - Completed Basic Route Setup
 
     - Added new milestones on the project board to hit before week 4
+      -Link: https://github.com/orgs/sfsu-csc-667-fall-2024-roberts/projects/2
 
 Other:
 No needed suplimentary items this week. Outside of the eer link.
