@@ -1,4 +1,3 @@
-/*
 import express from "express";
 const router = express.Router();
 router.post("/register", async (request, response) => {
@@ -33,4 +32,3 @@ router.get("/logout", (request, response) => {
     });
 });
 export default router;
-*/
