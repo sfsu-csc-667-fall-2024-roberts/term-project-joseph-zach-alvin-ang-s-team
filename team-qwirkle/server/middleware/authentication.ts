@@ -1,4 +1,3 @@
-/*
 import { NextFunction, Request, Response } from "express";
 const authenticationMiddleware = (
  request: Request,
@@ -17,4 +16,3 @@ user object
  }
 };
 export default authenticationMiddleware;
-*/
