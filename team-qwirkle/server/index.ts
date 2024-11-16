@@ -4,7 +4,9 @@ import express from "express";
 import httpErrors from "http-errors";
 import morgan from "morgan";
 import * as path from "path";
-import rootRoutes from "./routes/root";
+import * as configuration from "./config";
+import * as routes from "./routes";
+import * as middleware from "./middleware";
 
 import connectLiveReload from "connect-livereload";
 import livereload from "livereload";
@@ -21,7 +23,11 @@ app.use(express.static(path.join(process.cwd(), "src", "public")));
 app.use(cookieParser());
 app.set("views", path.join(process.cwd(), "team-qwirkle", "server", "views"));
 app.set("view engine", "ejs");
-app.use("/", rootRoutes);
+app.use("/", routes.home);
+app.use("/auth", routes.auth);
+app.use("/game", middleware.authentication, routes.game);
+app.use("/lobby", middleware.authentication, routes.lobby);
+app.use("/lobbyfinder", middleware.authentication, routes.lobbyfinder);
 app.use((_request, _response, next) => {
   next(httpErrors(404));
 });
@@ -33,15 +39,4 @@ const staticPath = path.join(process.cwd(), "src", "public");
 app.use(express.static(staticPath));
 console.log("working\n");
 
-if (process.env.MODES === "development") {
-  const reloadServer = livereload.createServer();
-  reloadServer.watch(staticPath);
-  reloadServer.server.once("connection", () => {
-    setTimeout(() => {
-      reloadServer.refresh("/");
-    }, 100);
-  });
-  app.use(connectLiveReload());
-} else {
-  console.log("not in dev environment! pages will not auto update\n");
-}
+configuration.configureLiveReload(app, staticPath);
