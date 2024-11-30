@@ -1,14 +1,33 @@
-<html>
- <head>
- <title>Login</title>
- </head>
- <body>
- <p>This page is what would load when logging in. The user would also be asked for a lobby code.</p><br>
- <a href="http://localhost:3000">home page</a><br>
- <a href="http://localhost:3000/lobby?code=hello">lobby link</a><br>
- <a href="http://localhost:3000/login">login link</a><br>
- <a href="http://localhost:3000/register">register link</a><br>
- <a href="http://localhost:3000/game">game link</a><br>
- <a href="http://localhost:3000/lobbyfinder">lobby finder link</a><br>
- </body>
-</html> 
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="/src/public/css/style.css" />
+    </head>
+<%- include('../partials/head') %>
+	<body>
+	<%- include('../partials/menu') %>
+		<section>
+			<form method="post" action="/auth/login">
+				<div>
+					<label for="email">Email</label>
+					<input
+					type="email"
+					id="email"
+					name="email"
+					placeholder="you@domain.com"
+					required
+					/>
+				</div>
+				<div>
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password"
+					required />
+					</div>
+					<div>
+					<button type="submit">Login</button>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>
