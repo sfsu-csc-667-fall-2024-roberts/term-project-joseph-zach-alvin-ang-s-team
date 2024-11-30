@@ -14,20 +14,25 @@ import livereload from "livereload";
 require("dotenv").config();
 
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(process.cwd(), "src", "public")));
 app.use(cookieParser());
+
 app.set("views", path.join(process.cwd(), "team-qwirkle", "server", "views"));
 app.set("view engine", "ejs");
+
 app.use("/", routes.home);
 app.use("/auth", routes.auth);
 app.use("/game", middleware.authentication, routes.game);
 app.use("/lobby", middleware.authentication, routes.lobby);
 app.use("/lobbyfinder", middleware.authentication, routes.lobbyfinder);
+
 app.use((_request, _response, next) => {
   next(httpErrors(404));
 });

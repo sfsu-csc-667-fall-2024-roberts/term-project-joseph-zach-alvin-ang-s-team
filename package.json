@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/connect-livereload": "^0.6.3",
     "@types/cookie-parser": "^1.4.7",
     "@types/express": "^5.0.0",
@@ -43,6 +44,7 @@
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.7",
+    "pg-promise": "^11.10.2",
     "ts-loader": "^9.5.1"
   },
   "lint-staged": {
