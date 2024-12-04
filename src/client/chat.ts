@@ -1,3 +1,4 @@
+/*
 const form = document.querySelector<HTMLFormElement>("#chat-section form")!;
 const input = document.querySelector<HTMLInputElement>("input#chat-message")!;
 const messageArea =
@@ -47,3 +48,4 @@ window.socket.on(
     messageArea.scrollTo(0, messageArea.scrollHeight);
   },
 );
+*/

@@ -1,16 +1,87 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <title>Game</title>
+        <style>
+            #game-area {
+
+            }
+            #input-form {
+                background-color: darkturquoise;
+                border-style: solid;
+                border-radius: 5%;
+                padding: 5%;
+            }
+            #input-form > form{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            #input-form > form > div {
+                width: 25%;
+            }
+            p, h1, div, label {
+                text-shadow: 2px 2px 5px rgb(0, 0, 0);
+                font-size:xx-large;
+                text-align: center;
+            }
+        </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/src/public/css/style.css" />
     </head>
-    <body>
-        <p>This page is what would load when a game starts</p><br>
-        <a href="http://localhost:3000">home page</a><br>
-        <a href="http://localhost:3000/lobby?code=hello">lobby link</a><br>
-        <a href="http://localhost:3000/login">login link</a><br>
-        <a href="http://localhost:3000/register">register link</a><br>
-        <a href="http://localhost:3000/game">game link</a><br>
-        <a href="http://localhost:3000/lobbyfinder">lobby finder link</a><br>
-    </body>
-</html> 
+<%- include('../partials/head') %>
+	<body>
+	<%- include('../partials/menu') %>
+        <section id="game-area">
+            <section id="board">
+                <div id="arrow-up">
+
+                </div>
+                <div id="arrow-left">
+                    
+                </div>
+                <div id="tile-area">
+
+                </div>
+                <div id="arrow-down">
+                    
+                </div>
+                <div id="arrow-right">
+                    
+                </div>
+            </section>
+            <section id="hand">
+                <div id="tile-slot">
+                    <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                </div>
+                <div id="tile-slot">
+                    <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                </div>
+                <div id="tile-slot">
+                    <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                </div>
+                <div id="tile-slot">
+                    <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                </div>
+                <div id="tile-slot">
+                    <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                </div>
+                <div id="tile-slot">
+                    <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                </div>
+            </section>
+        </section>
+        <section id="sidebar">
+            <section id="leave">
+                <button type="button" onclick="">Leave</button>
+            </section>
+            <section id="chat">
+
+            </section>
+            <section id="end-turn">
+                <button type="button" onclick="">End Turn</button>
+            </section>
+        </section>
+	</body>
+</html>

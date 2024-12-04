@@ -2,7 +2,38 @@
 <html lang="en">
     <head>
         <title>Register</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            #input-form {
+                background-color: darkturquoise;
+                border-style: solid;
+                border-radius: 5%;
+                padding: 5%;
+            }
+            #input-form > form{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            #input-form > form > div {
+                width: 25%;
+            }
+            p, h1, div, label {
+                text-shadow: 2px 2px 5px rgb(0, 0, 0);
+                font-size:xx-large;
+                text-align: center;
+            }
+            label,input{
+                display:flex;
+                flex-direction: column;
+                margin:0 auto;
+            }
+            #email, #password, #submit, #username{
+                box-shadow: 5px 5px rgb(87, 87, 87);
+                text-align: center;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/src/public/css/style.css" />
     </head>
 <%- include('../partials/head') %>
@@ -10,6 +41,9 @@
 	<%- include('../partials/menu') %>
 		<section id = "input-form">
 			<form method="post" action="/auth/register">
+                <div>
+                    <h1> Qwirkle</h1>
+                </div>
 				<div>
 					<label for="username">Username</label> 
 					<input
