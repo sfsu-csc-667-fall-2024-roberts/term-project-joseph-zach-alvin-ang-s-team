@@ -1,0 +1,60 @@
+<style>
+    button{
+        background-color: #a0c464;
+        width:30px,
+    }
+    #chat-message{
+        display:flex;
+        align-items: center;
+        flex-direction: row;
+    }
+    #content{
+        size:8px;
+        color:gray;
+    }
+    #chat-area{
+        display:flex;
+        flex-direction: column;
+        height: 300px;
+    }
+    #post{
+        display:flex;
+        flex-direction: row;
+        height: 20px;
+        margin: 8px;
+    }
+    #messages{
+        border-width: 1px;
+        border-color: gray;
+        overflow-y: auto;
+        
+    }
+    #chat-message{
+        border-width:1px;
+        border-color:gray;
+        size:10px;
+        display:block;
+        flex-grow: 1;
+        margin-right:4px;
+    }
+
+</style>
+
+ <!--can add more style later -->
+
+<template id="chat-message-template">
+    <li class= "chat-message">
+        <span class="content"> </span>
+    </li>
+
+</template>
+
+<aside id="chat-area">
+    <ul id="messages"> </ul>
+    <form method="post">
+        <input id="chat-message" placeholder="Type your message" autocomplete="off"/>
+        <button> Send </button>
+    </form>
+</aside>
+
+<!-- SCRIPT IN HERE TOO -->

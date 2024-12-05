@@ -1,20 +1,3 @@
-<html>
-    <head>
-        <title>Lobby</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/src/public/css/style.css" />
-    </head>
-    <body>
-        <p>This page is what would load when joining a lobby</p><br>
-        <p>The lobby ID from the url is: <%= code %></p><br>
-        <a href="http://localhost:3000">home page</a><br>
-        <a href="http://localhost:3000/lobby?code=hello">lobby link</a><br>
-        <a href="http://localhost:3000/login">login link</a><br>
-        <a href="http://localhost:3000/register">register link</a><br>
-        <a href="http://localhost:3000/game">game link</a><br>
-        <a href="http://localhost:3000/lobbyfinder">lobby finder link</a><br>
-    </body>
-</html> 
 <!doctype html>
 <html lang="en">
     <head>
@@ -23,6 +6,11 @@
             h1, h2, div, label {
                 font-size:xx-large;
                 text-align: center;
+            }
+            h3{
+                text-align: center;
+                font-size: x-large;
+                color:#4e5f32;
             }
             p {
                 font-size:medium;
@@ -42,6 +30,11 @@
             }
             button{
                 align-items:center;
+                text-align: center;
+                margin: 40px;
+                width: 100px;
+                height: 60px;
+                font-size: large;
             }
             #rules{
                 display:flex;
@@ -74,8 +67,14 @@
                 background-color: #a0c464;
                 justify-content: center;
             }
-            #host{
-                background-color:#b68ce6
+            #current-player{
+                background-color:#b68ce6;  
+            }
+            #play{
+                background-color:#b68ce6;
+            }
+            #cancel{
+                background-color: #7b5aa0;
             }
 
 
@@ -89,6 +88,8 @@
             <h1>Qwirkle</h1>
         </div>
 
+        <!-- can add/adjust the boxes to have text underneath
+        OR have the names in the boxes-->
         <section id = "lobby-members">
             <div id="host">One</div>
             <div>Two</div>
@@ -107,14 +108,19 @@
             <div>Five</div>
             <div>Six</div>
         </section>
-
-        <section id = "player-number">
-
-        </section>
         
-        <section id = "host-button">
-
+        <section id = "host-buttons">
+            <button id="play">Play</button>
+            <button id="cancel">Cancel</button>
         </section>        
+
+        <section id = "non-host">
+            <h3>Waiting for Host...</h3>
+        </section>
+
+        <section id = "player-count">
+            <!-- database code in here -->
+        </section>
 
         <section id = "rules">
             <h1> How To: </h1>
@@ -129,3 +135,4 @@
 </html>
 
 <!-- <p>The lobby ID from the url is: <%= code %></p><br> -->
+ <!--assign current-player to whoever needs it -->
