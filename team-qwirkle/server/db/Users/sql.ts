@@ -1,9 +1,9 @@
 export const REGISTER_SQL = `
-INSERT INTO users (username, email, password)
-VALUES ($1, $2, $3)
-RETURNING id, username, email
+INSERT INTO account (account_id, player_id, username, password, created)
+VALUES ($1, $2, $3, $4, $5)
+RETURNING account_id, player_id, username, password, created
 `;
 
-export const FIND_BY_EMAIL_SQL = `
-SELECT * FROM users WHERE email = $1
+export const FIND_BY_USERNAME_SQL = `
+SELECT * FROM account WHERE username = $1
 `;

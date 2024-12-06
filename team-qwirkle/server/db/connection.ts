@@ -1,5 +1,13 @@
 import pgp from "pg-promise";
 
-const connection = pgp()(process.env.DATABASE_URL as string);
+const connection = pgp();
 
-export default connection;
+const db = connection({
+  user: process.env.username,
+  host: process.env.DATABASE_URL,
+  database: process.env.database,
+  password: process.env.password,
+  port: Number(process.env.port),
+});
+
+export default db;
