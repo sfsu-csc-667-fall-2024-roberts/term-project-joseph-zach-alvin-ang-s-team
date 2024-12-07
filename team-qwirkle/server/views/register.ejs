@@ -34,13 +34,11 @@
             }
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/src/public/css/style.css" />
+        <!--<link rel="stylesheet" href="/src/public/css/style.css" />-->
     </head>
-<%- include('../partials/head') %>
 	<body>
-	<%- include('../partials/menu') %>
 		<section id = "input-form">
-			<form method="post" action="/auth/register">
+			<form method="post" action="/register">
                 <div>
                     <h1> Qwirkle</h1>
                 </div>
@@ -52,16 +50,6 @@
 					 name="username"
 					 placeholder="Choose your username"
 					 required
-					/>
-				</div>
-				<div>
-					<label for="email">Email</label>
-					<input
-					type="email"
-					id="email"
-					name="email"
-					placeholder="you@domain.com"
-					required
 					/>
 				</div>
 				<div>

@@ -4,9 +4,11 @@ import { FIND_BY_USERNAME_SQL, REGISTER_SQL } from "./sql";
 import { StringLiteral } from "typescript";
 
 type User = {
-  id: number;
+  account_id: number;
+  player_id: number;
   username: string;
-  email: string;
+  password: string;
+  created: string;
 };
 
 type UserWithPassword = User & {
@@ -15,12 +17,12 @@ type UserWithPassword = User & {
 
 const register = async (
   username: string,
-  created: string,
   clearTextPassword: string,
 ): Promise<User> => {
   const password = await bcrypt.hash(clearTextPassword, 10);
   const account_id = await bcrypt.hash(clearTextPassword + username, 25);
   const player_id = await bcrypt.hash(clearTextPassword + username, 30);
+  const created = 0;
   return await db.one(REGISTER_SQL, [
     account_id,
     player_id,
