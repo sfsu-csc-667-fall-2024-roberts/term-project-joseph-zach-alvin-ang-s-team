@@ -32,10 +32,15 @@
                 display: grid;
                 grid-template-columns: repeat(8, auto);
             }
-            #tile-spot {
+            .tile-spot {
                 background-color: aliceblue;
+                padding: 10px;
                 width: 100%;
                 height: 100%;
+            }
+            .tile {
+                cursor: move;
+                z-index: 10;
             }
             #sidebar {
                 width: 25%;
@@ -73,84 +78,84 @@
                     </div>
                     <div id="tile-area">
                         <!--row 1-->
-                        <div id="tile-spot">1</div>
-                        <div id="tile-spot">1</div>
-                        <div id="tile-spot">1</div>
-                        <div id="tile-spot">1</div>
-                        <div id="tile-spot">1</div>
-                        <div id="tile-spot">1</div>
-                        <div id="tile-spot">1</div>
-                        <div id="tile-spot">1</div>
+                        <div class="tile-spot" data-coord="(1,1)">1</div>
+                        <div class="tile-spot" data-coord="(1,2)">1</div>
+                        <div class="tile-spot" data-coord="(1,3)">1</div>
+                        <div class="tile-spot" data-coord="(1,4)">1</div>
+                        <div class="tile-spot" data-coord="(1,5)">1</div>
+                        <div class="tile-spot" data-coord="(1,6)">1</div>
+                        <div class="tile-spot" data-coord="(1,7)">1</div>
+                        <div class="tile-spot" data-coord="(1,8)">1</div>
 
                         <!--row 2-->
-                        <div id="tile-spot">2</div>
-                        <div id="tile-spot">2</div>
-                        <div id="tile-spot">2</div>
-                        <div id="tile-spot">2</div>
-                        <div id="tile-spot">2</div>
-                        <div id="tile-spot">2</div>
-                        <div id="tile-spot">2</div>
-                        <div id="tile-spot">2</div>
+                        <div class="tile-spot" data-coord="(2,1)">1</div>
+                        <div class="tile-spot" data-coord="(2,2)">1</div>
+                        <div class="tile-spot" data-coord="(2,3)">1</div>
+                        <div class="tile-spot" data-coord="(2,4)">1</div>
+                        <div class="tile-spot" data-coord="(2,5)">1</div>
+                        <div class="tile-spot" data-coord="(2,6)">1</div>
+                        <div class="tile-spot" data-coord="(2,7)">1</div>
+                        <div class="tile-spot" data-coord="(2,8)">1</div>
 
                         <!--row 3-->
-                        <div id="tile-spot">3</div>
-                        <div id="tile-spot">3</div>
-                        <div id="tile-spot">3</div>
-                        <div id="tile-spot">3</div>
-                        <div id="tile-spot">3</div>
-                        <div id="tile-spot">3</div>
-                        <div id="tile-spot">3</div>
-                        <div id="tile-spot">3</div>
+                        <div class="tile-spot" data-coord="(3,1)">1</div>
+                        <div class="tile-spot" data-coord="(3,2)">1</div>
+                        <div class="tile-spot" data-coord="(3,3)">1</div>
+                        <div class="tile-spot" data-coord="(3,4)">1</div>
+                        <div class="tile-spot" data-coord="(3,5)">1</div>
+                        <div class="tile-spot" data-coord="(3,6)">1</div>
+                        <div class="tile-spot" data-coord="(3,7)">1</div>
+                        <div class="tile-spot" data-coord="(3,8)">1</div>
 
                         <!--row 4-->
-                        <div id="tile-spot">4</div>
-                        <div id="tile-spot">4</div>
-                        <div id="tile-spot">4</div>
-                        <div id="tile-spot">4</div>
-                        <div id="tile-spot">4</div>
-                        <div id="tile-spot">4</div>
-                        <div id="tile-spot">4</div>
-                        <div id="tile-spot">4</div>
+                        <div class="tile-spot" data-coord="(4,1)">1</div>
+                        <div class="tile-spot" data-coord="(4,2)">1</div>
+                        <div class="tile-spot" data-coord="(4,3)">1</div>
+                        <div class="tile-spot" data-coord="(4,4)">1</div>
+                        <div class="tile-spot" data-coord="(4,5)">1</div>
+                        <div class="tile-spot" data-coord="(4,6)">1</div>
+                        <div class="tile-spot" data-coord="(4,7)">1</div>
+                        <div class="tile-spot" data-coord="(4,8)">1</div>
 
                         <!--row 5-->
-                        <div id="tile-spot">5</div>
-                        <div id="tile-spot">5</div>
-                        <div id="tile-spot">5</div>
-                        <div id="tile-spot">5</div>
-                        <div id="tile-spot">5</div>
-                        <div id="tile-spot">5</div>
-                        <div id="tile-spot">5</div>
-                        <div id="tile-spot">5</div>
+                        <div class="tile-spot" data-coord="(5,1)">1</div>
+                        <div class="tile-spot" data-coord="(5,2)">1</div>
+                        <div class="tile-spot" data-coord="(5,3)">1</div>
+                        <div class="tile-spot" data-coord="(5,4)">1</div>
+                        <div class="tile-spot" data-coord="(5,5)">1</div>
+                        <div class="tile-spot" data-coord="(5,6)">1</div>
+                        <div class="tile-spot" data-coord="(5,7)">1</div>
+                        <div class="tile-spot" data-coord="(5,8)">1</div>
 
                         <!--row 6-->
-                        <div id="tile-spot">6</div>
-                        <div id="tile-spot">6</div>
-                        <div id="tile-spot">6</div>
-                        <div id="tile-spot">6</div>
-                        <div id="tile-spot">6</div>
-                        <div id="tile-spot">6</div>
-                        <div id="tile-spot">6</div>
-                        <div id="tile-spot">6</div>
+                        <div class="tile-spot" data-coord="(6,1)">1</div>
+                        <div class="tile-spot" data-coord="(6,2)">1</div>
+                        <div class="tile-spot" data-coord="(6,3)">1</div>
+                        <div class="tile-spot" data-coord="(6,4)">1</div>
+                        <div class="tile-spot" data-coord="(6,5)">1</div>
+                        <div class="tile-spot" data-coord="(6,6)">1</div>
+                        <div class="tile-spot" data-coord="(6,7)">1</div>
+                        <div class="tile-spot" data-coord="(6,8)">1</div>
 
                         <!--row 7-->
-                        <div id="tile-spot">7</div>
-                        <div id="tile-spot">7</div>
-                        <div id="tile-spot">7</div>
-                        <div id="tile-spot">7</div>
-                        <div id="tile-spot">7</div>
-                        <div id="tile-spot">7</div>
-                        <div id="tile-spot">7</div>
-                        <div id="tile-spot">7</div>
+                        <div class="tile-spot" data-coord="(7,1)">1</div>
+                        <div class="tile-spot" data-coord="(7,2)">1</div>
+                        <div class="tile-spot" data-coord="(7,3)">1</div>
+                        <div class="tile-spot" data-coord="(7,4)">1</div>
+                        <div class="tile-spot" data-coord="(7,5)">1</div>
+                        <div class="tile-spot" data-coord="(7,6)">1</div>
+                        <div class="tile-spot" data-coord="(7,7)">1</div>
+                        <div class="tile-spot" data-coord="(7,8)">1</div>
 
                         <!--row 8-->
-                        <div id="tile-spot">8</div>
-                        <div id="tile-spot">8</div>
-                        <div id="tile-spot">8</div>
-                        <div id="tile-spot">8</div>
-                        <div id="tile-spot">8</div>
-                        <div id="tile-spot">8</div>
-                        <div id="tile-spot">8</div>
-                        <div id="tile-spot">8</div>
+                        <div class="tile-spot" data-coord="(8,1)">1</div>
+                        <div class="tile-spot" data-coord="(8,2)">1</div>
+                        <div class="tile-spot" data-coord="(8,3)">1</div>
+                        <div class="tile-spot" data-coord="(8,4)">1</div>
+                        <div class="tile-spot" data-coord="(8,5)">1</div>
+                        <div class="tile-spot" data-coord="(8,6)">1</div>
+                        <div class="tile-spot" data-coord="(8,7)">1</div>
+                        <div class="tile-spot" data-coord="(8,8)">1</div>
                     </div>
                     <div id="arrow-down">
                         <button type="button">Down</button>
@@ -161,22 +166,22 @@
                 </section>
                 <section id="hand">
                     <div id="tile-slot">
-                        <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
                     </div>
                 </section>
             </section>
@@ -192,5 +197,53 @@
                 </section>
             </section>
         </section>
+        <script>
+            
+            const tiles = document.getElementsByClassName("tile");
+            const tile_slots = document.getElementsByClassName("tile-spot");
+            const tilesArr = Array.from(tiles);
+            const slotsArr = Array.from(tile_slots);
+
+            let tileSelected = false;
+            let startX, startY;
+            let tileObj;
+
+            var click_count_tile = 0;
+            var click_count_slot = 0;
+
+            tilesArr.forEach((clickTile) => {
+                clickTile.addEventListener("mousedown", (e) => {
+
+                    click_count_tile++;
+                    console.log("clicked tile: " + click_count_tile);
+
+                    tileSelected = true;
+                    tileObj = e;
+
+                    startX = e.clientX - e.offsetLeft;
+                    startY = e.clientY - e.offsetTop;
+                });
+            });
+
+            slotsArr.forEach((clickSlot) => {
+                clickSlot.addEventListener("mousedown",(e) => {
+
+                    console.log("clicked tile_slot: " + clickSlot.dataset.coord);
+
+                    if (tileSelected) {
+
+                        tileSelected=false;
+
+                        console.log("attempt placing at: " + clickSlot.dataset.coord);
+
+                        const x = e.clientX - startX;
+                        const y = e.clientY - startY;
+
+                        tileObj.style.left = `${x}px`;
+                        tileObj.style.top = `${y}px`;
+                    }
+                });
+            });
+        </script>
 	</body>
 </html>
