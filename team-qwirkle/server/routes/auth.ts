@@ -6,7 +6,28 @@ import session from "express-session";
 const router = express.Router();
 
 router.get("/", async (_request, response) => {
-  response.render("login", { title: "Welcome" });
+  response.render("auth/register", { title: "Welcome" });
+});
+
+router.post("/register", async (request, response) => {
+  const { username, password } = request.body;
+
+  try {
+    const user = await Users.register(username, password);
+    // @ts-expect-error TODO: Define the session type for the user object
+    request.session.user = user;
+
+    response.redirect("/lobby");
+  } catch (error) {
+    console.error(error);
+
+    request.flash("error", "Failed to register user");
+    response.redirect("/auth/register");
+  }
+});
+
+router.get("/login", async (_request, response) => {
+  response.render("auth/login", { title: "Welcome" });
 });
 
 router.post("/login", async (request, response) => {
@@ -22,7 +43,7 @@ router.post("/login", async (request, response) => {
     console.error(error);
 
     request.flash("error", error as string);
-    response.redirect("/login"); // CHANFGE THIS WHEN U DO LOG IN (remove auth)
+    response.redirect("/auth/login"); // CHANFGE THIS WHEN U DO LOG IN (remove auth)
   }
 });
 

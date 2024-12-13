@@ -16,7 +16,7 @@
   \****************************/
       /***/ () => {
         eval(
-          '\nconsole.log("Hello world");\n\n\n//# sourceURL=webpack://term-project-joseph-zach-alvin-ang-s-team/./src/client/main.ts?',
+          '\n/* import { io, Socket } from "socket.io-client";\n\ndeclare global {\n  interface Window {\n    socket: Socket;\n    roomId: number;\n  }\n}\n\n// declare module "express-session" {\n//   interface SessionData {\n//     user: {\n//       id: number;\n//       username: string;\n//       email: string;\n//       gravatar: string;\n//     };\n//     roomId: number;\n//   }\n// }\n\nwindow.socket = io();\n*/\n\n\n//# sourceURL=webpack://term-project-joseph-zach-alvin-ang-s-team/./src/client/main.ts?',
         );
 
         /***/

@@ -32,11 +32,11 @@ app.set("views", path.join(process.cwd(), "team-qwirkle", "server", "views"));
 app.set("view engine", "ejs");
 
 app.use("/", routes.root);
-app.use("/login", routes.login);
-app.use("/register", routes.register);
+app.use("/auth", routes.auth);
 app.use("/game", middleware.authentication, routes.game);
 app.use("/lobby", middleware.authentication, routes.lobby);
 app.use("/lobbyfinder", middleware.authentication, routes.lobbyfinder);
+// app.use("/chat", middleware.authentication, routes.chat);
 
 app.use((_request, _response, next) => {
   next(httpErrors(404));
