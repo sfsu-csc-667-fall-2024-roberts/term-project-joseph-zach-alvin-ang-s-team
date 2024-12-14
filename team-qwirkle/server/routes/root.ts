@@ -8,10 +8,10 @@ router.get("/lobby", (_request, response) => {
   response.render("lobby", { code: _request.query.code });
 });
 router.get("/login", (_request, response) => {
-  response.render("login");
+  response.render("auth/login");
 });
 router.get("/register", (_request, response) => {
-  response.render("register");
+  response.render("auth/register");
 });
 router.get("/game", (_request, response) => {
   response.render("game");

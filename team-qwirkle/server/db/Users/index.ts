@@ -23,6 +23,7 @@ const register = async (
   const account_id = await bcrypt.hash(clearTextPassword + username, 25);
   const player_id = await bcrypt.hash(clearTextPassword + username, 30);
   const created = 0;
+  console.log("index debug");
   return await db.one(REGISTER_SQL, [
     account_id,
     player_id,
