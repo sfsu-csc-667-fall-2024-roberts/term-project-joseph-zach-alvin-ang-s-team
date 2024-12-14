@@ -5,11 +5,11 @@ import session from "express-session";
 
 const router = express.Router();
 
-router.get("/", async (_request, response) => {
+router.get("/register", async (_request, response) => {
   response.render("auth/register", { title: "Welcome" });
 });
 
-router.post("/register", async (request, response) => {
+router.post("/auth/register", async (request, response) => {
   const { username, password } = request.body;
 
   try {
@@ -21,8 +21,8 @@ router.post("/register", async (request, response) => {
   } catch (error) {
     console.error(error);
 
-    request.flash("error", "Failed to register user");
-    response.redirect("/auth/register");
+    // request.flash("error", "Failed to register user");
+    response.redirect("/register");
   }
 });
 
@@ -30,7 +30,7 @@ router.get("/login", async (_request, response) => {
   response.render("auth/login", { title: "Welcome" });
 });
 
-router.post("/login", async (request, response) => {
+router.post("/auth/login", async (request, response) => {
   const { email, password } = request.body;
 
   try {
@@ -42,8 +42,8 @@ router.post("/login", async (request, response) => {
   } catch (error) {
     console.error(error);
 
-    request.flash("error", error as string);
-    response.redirect("/auth/login"); // CHANFGE THIS WHEN U DO LOG IN (remove auth)
+    // request.flash("error", error as string);
+    response.redirect("/login"); // CHANFGE THIS WHEN U DO LOG IN (remove auth)
   }
 });
 
