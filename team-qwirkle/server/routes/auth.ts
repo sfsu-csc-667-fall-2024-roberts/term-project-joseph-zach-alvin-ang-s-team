@@ -9,7 +9,7 @@ router.get("/register", async (_request, response) => {
   response.render("auth/register", { title: "Welcome" });
 });
 
-router.post("/auth/register", async (request, response) => {
+router.post("/register", async (request, response) => {
   const { username, password } = request.body;
 
   try {
@@ -30,7 +30,7 @@ router.get("/login", async (_request, response) => {
   response.render("auth/login", { title: "Welcome" });
 });
 
-router.post("/auth/login", async (request, response) => {
+router.post("/login", async (request, response) => {
   const { email, password } = request.body;
 
   try {
