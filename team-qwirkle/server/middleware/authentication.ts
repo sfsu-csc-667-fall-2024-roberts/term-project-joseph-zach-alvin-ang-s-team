@@ -1,15 +1,14 @@
 import { NextFunction, Request, Response } from "express";
+import { SessionData } from "express-session";
 const authenticationMiddleware = (
   request: Request,
   response: Response,
   next: NextFunction,
 ) => {
-  // @ts-expect-error TODO: Define the session type for the user object
-  if (!request.session.user) {
+  if (!request.session) {
     response.redirect("/auth/login");
   } else {
-    // @ts-expect-error TODO: Define the session type for the user object
-    response.locals.user = request.session.user;
+    response.locals.user = request.session as SessionData;
     next();
   }
 };
