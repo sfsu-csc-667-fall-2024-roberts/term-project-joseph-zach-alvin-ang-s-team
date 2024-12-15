@@ -14,8 +14,8 @@ router.post("/register", async (request, response) => {
 
   try {
     const user = await Users.register(username, password);
-    // @ts-expect-error TODO: Define the session type for the user object
-    request.session.user = user;
+    // ts-expect-error TODO: Define the session type for the user object
+    //request.session.user = user;
 
     response.redirect("/lobby");
   } catch (error) {

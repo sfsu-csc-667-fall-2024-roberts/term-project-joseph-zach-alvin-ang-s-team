@@ -3,9 +3,21 @@ import db from "../connection";
 import { FIND_BY_USERNAME_SQL, REGISTER_SQL } from "./sql";
 import { StringLiteral } from "typescript";
 
+function getSQLTimestamp(): string {
+  const now: Date = new Date();
+  const year: number = now.getFullYear();
+  const month: string = String(now.getMonth() + 1).padStart(2, "0");
+  const day: string = String(now.getDate()).padStart(2, "0");
+  const hours: string = String(now.getHours()).padStart(2, "0");
+  const minutes: string = String(now.getMinutes()).padStart(2, "0");
+  const seconds: string = String(now.getSeconds()).padStart(2, "0");
+
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+const sqlTimestamp: string = getSQLTimestamp();
+
 type User = {
-  account_id: number;
-  player_id: number;
   username: string;
   password: string;
   created: string;
@@ -20,17 +32,9 @@ const register = async (
   clearTextPassword: string,
 ): Promise<User> => {
   const password = await bcrypt.hash(clearTextPassword, 10);
-  const account_id = await bcrypt.hash(clearTextPassword + username, 25);
-  const player_id = await bcrypt.hash(clearTextPassword + username, 30);
-  const created = 0;
+  const created = getSQLTimestamp();
   console.log("index debug");
-  return await db.one(REGISTER_SQL, [
-    account_id,
-    player_id,
-    username,
-    password,
-    created,
-  ]);
+  return await db.one(REGISTER_SQL, [username, password, created]);
 };
 
 const login = async (username: string, clearTextPassword: string) => {
