@@ -2,239 +2,157 @@
 <html lang="en">
     <head>
         <title>Game</title>
-        <style>
-            #body, #hand {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-            }
-            #body {
-                background-color: bisque;
-                background-size: cover;
-                height: 100%;
-                width: 100%;
-            }
-            #game-area {
-                width: 75%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            #board {
-                background-color: rgb(152, 126, 86);
-                display: grid;
-                width: 100%;
-                height: 100%;
-            }
-            #tile-area {
-                display: grid;
-                grid-template-columns: repeat(8, auto);
-            }
-            .tile-spot {
-                background-color: aliceblue;
-                padding: 10px;
-                width: 100%;
-                height: 100%;
-            }
-            #sidebar {
-                width: 25%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            #leave {
-                height: 10%;
-                width: 100%;
-            }
-            #chat {
-                height: 80%;
-                background-color: rgb(152, 126, 86);
-                width: 100%;
-            }
-            #end-turn {
-                height: 10%;
-                width: 100%;
-            }
-        </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/src/public/css/style.css" />
+        <link rel="stylesheet" href="/css/Game/game.css">
+        <script rel="script" src="js/Game/tileClickHandler.js"></script>
     </head>
 	<body>
         <section id="body">
             <section id="game-area">
                 <section id="board">
-                    <div id="arrow-up">
-                        <button type="button">Up</button>
-                    </div>
-                    <div id="arrow-left">
-                        <button type="button">Left</button>
-                    </div>
-                    <div id="tile-area">
-                        <!--row 1-->
-                        <div class="tile-spot" data-coord="(1,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(1,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(1,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(1,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(1,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(1,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(1,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(1,8)" data-hasTile="0">1</div>
-
-                        <!--row 2-->
-                        <div class="tile-spot" data-coord="(2,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(2,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(2,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(2,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(2,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(2,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(2,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(2,8)" data-hasTile="0">1</div>
-
-                        <!--row 3-->
-                        <div class="tile-spot" data-coord="(3,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(3,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(3,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(3,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(3,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(3,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(3,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(3,8)" data-hasTile="0">1</div>
-
-                        <!--row 4-->
-                        <div class="tile-spot" data-coord="(4,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(4,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(4,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(4,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(4,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(4,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(4,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(4,8)" data-hasTile="0">1</div>
-
-                        <!--row 5-->
-                        <div class="tile-spot" data-coord="(5,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(5,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(5,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(5,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(5,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(5,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(5,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(5,8)" data-hasTile="0">1</div>
-
-                        <!--row 6-->
-                        <div class="tile-spot" data-coord="(6,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(6,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(6,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(6,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(6,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(6,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(6,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(6,8)" data-hasTile="0">1</div>
-
-                        <!--row 7-->
-                        <div class="tile-spot" data-coord="(7,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(7,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(7,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(7,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(7,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(7,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(7,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(7,8)" data-hasTile="0">1</div>
-
-                        <!--row 8-->
-                        <div class="tile-spot" data-coord="(8,1)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(8,2)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(8,3)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(8,4)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(8,5)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(8,6)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(8,7)" data-hasTile="0">1</div>
-                        <div class="tile-spot" data-coord="(8,8)" data-hasTile="0">1</div>
-                    </div>
-                    <div id="arrow-down">
-                        <button type="button">Down</button>
-                    </div>
-                    <div id="arrow-right">
-                        <button type="button">Right</button>
-                    </div>
+                        <div id="empty-board_1"></div>
+                        <div id="empty-board_2"></div>
+                        <div id="empty-board_3"></div>
+                        <div id="empty-board_4"></div>
+                        <div id="empty-board_5"></div>
+                        <div id="empty-board_6"></div>
+                        <div id="empty-board_7"></div>
+                        <div id="empty-board_8"></div>
+                        <div id="empty-board_9"></div>
+                        <div id="arrow-up">
+                            <button type="submit">
+                                <img src="/images/CameraView_Arrows/red-arrow_up.png" width="90" height="90" alt="up" />
+                            </button>
+                        </div>
+                        <div id="leave">
+                            <button type="button" onclick="">Leave</button>
+                        </div>
+                        <div id="arrow-left">
+                            <button type="submit">
+                                <img src="/images/CameraView_Arrows/red-arrow_left.png" width="90" height="90" alt="left" />
+                            </button>
+                        </div>
+                        <div id="tile-area">
+                            <!--row 1-->
+                            <div class="tile-spot" data-coord="(1,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(1,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(1,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(1,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(1,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(1,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(1,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(1,8)" data-hasTile="0">1</div>
+    
+                            <!--row 2-->
+                            <div class="tile-spot" data-coord="(2,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(2,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(2,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(2,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(2,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(2,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(2,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(2,8)" data-hasTile="0">1</div>
+    
+                            <!--row 3-->
+                            <div class="tile-spot" data-coord="(3,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(3,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(3,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(3,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(3,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(3,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(3,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(3,8)" data-hasTile="0">1</div>
+    
+                            <!--row 4-->
+                            <div class="tile-spot" data-coord="(4,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(4,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(4,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(4,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(4,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(4,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(4,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(4,8)" data-hasTile="0">1</div>
+    
+                            <!--row 5-->
+                            <div class="tile-spot" data-coord="(5,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(5,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(5,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(5,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(5,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(5,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(5,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(5,8)" data-hasTile="0">1</div>
+    
+                            <!--row 6-->
+                            <div class="tile-spot" data-coord="(6,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(6,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(6,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(6,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(6,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(6,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(6,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(6,8)" data-hasTile="0">1</div>
+    
+                            <!--row 7-->
+                            <div class="tile-spot" data-coord="(7,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(7,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(7,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(7,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(7,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(7,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(7,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(7,8)" data-hasTile="0">1</div>
+    
+                            <!--row 8-->
+                            <div class="tile-spot" data-coord="(8,1)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(8,2)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(8,3)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(8,4)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(8,5)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(8,6)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(8,7)" data-hasTile="0">1</div>
+                            <div class="tile-spot" data-coord="(8,8)" data-hasTile="0">1</div>
+                        </div>
+                        <div id="arrow-right">
+                            <button type="submit">
+                                <img src="/images/CameraView_Arrows/red-arrow_right.png" width="90" height="90" alt="right" />
+                            </button>
+                        </div>
+                        <div id="arrow-down">
+                            <button type="submit">
+                                <img src="/images/CameraView_Arrows/red-arrow_down.png" width="90" height="90" alt="down" />
+                            </button>
+                        </div>
+                        <div id="end-turn">
+                            <button type="button" onclick="">End Turn</button>
+                        </div>
                 </section>
                 <section id="hand">
                     <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png">
                     </div>
                     <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/src/public/images/tileset/TilePieceQB1.png">
+                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png">
                     </div>
                 </section>
             </section>
             <section id="sidebar">
-                <section id="leave">
-                    <button type="button" onclick="">Leave</button>
-                </section>
                 <section id="chat">
                     chat here
                 </section>
-                <section id="end-turn">
-                    <button type="button" onclick="">End Turn</button>
-                </section>
             </section>
         </section>
-        <script>
-            
-            const tiles = document.getElementsByClassName("tile");
-            const tile_slots = document.getElementsByClassName("tile-spot");
-            const tilesArr = Array.from(tiles);
-            const slotsArr = Array.from(tile_slots);
-
-            let tileSelected = false;
-            let tileObj;
-
-            var click_count_tile = 0;
-            var click_count_slot = 0;
-
-            tilesArr.forEach((clickTile) => {
-
-                clickTile.addEventListener("mousedown", (e) => {
-
-                    click_count_tile++;
-                    console.log("clicked tile: " + click_count_tile);
-                    console.log(e.src);
-
-                    tileSelected = true;
-                    tileObj = e;
-                });
-            });
-
-            slotsArr.forEach((clickSlot) => {
-
-                clickSlot.addEventListener("mousedown",(e) => {
-
-                    console.log("clicked tile_spot: " + clickSlot.dataset.coord);
-                    console.log("clicked tile_spot: " + clickSlot.dataset.hasTile);
-
-                    if (tileSelected) {
-
-                        tileSelected=false;
-
-                        console.log("attempt placing at: " + clickSlot.dataset.coord);
-                        console.log("tile to be placed: " + tileObj.src);
-                    }
-                });
-            });
-        </script>
 	</body>
 </html>

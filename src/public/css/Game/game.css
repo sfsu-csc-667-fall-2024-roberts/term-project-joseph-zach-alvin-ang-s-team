@@ -1,0 +1,132 @@
+#body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: bisque;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+#hand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+#game-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#board {
+  background-color: rgb(152, 126, 86);
+  display: grid;
+  grid-template-areas:
+    "eb1    eb1     eb1     eb1     eb1      au      eb3     eb3     eb3     l"
+    "eb4     ta      ta      ta      ta      ta      ta      ta      ta      eb6"
+    "eb4     ta      ta      ta      ta      ta      ta      ta      ta      eb6"
+    "eb4     ta      ta      ta      ta      ta      ta      ta      ta      eb6"
+    "eb4     ta      ta      ta      ta      ta      ta      ta      ta      eb6"
+    "al      ta      ta      ta      ta      ta      ta      ta      ta      ar"
+    "eb5     ta      ta      ta      ta      ta      ta      ta      ta      eb7"
+    "eb5     ta      ta      ta      ta      ta      ta      ta      ta      eb7"
+    "eb5     ta      ta      ta      ta      ta      ta      ta      ta      eb7"
+    "eb2     eb2     eb2     eb2     eb2     ad      eb8     eb8     eb8     et";
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  gap: 1vw;
+  padding: 1vw;
+}
+
+#empty-board_1 {
+  grid-area: eb1;
+  background-color: aqua;
+}
+#empty-board_2 {
+  grid-area: eb2;
+  background-color: aquamarine;
+}
+#empty-board_3 {
+  grid-area: eb3;
+  background-color: black;
+}
+#empty-board_4 {
+  grid-area: eb4;
+  background-color: cadetblue;
+}
+#empty-board_5 {
+  grid-area: eb5;
+  background-color: blue;
+}
+#empty-board_6 {
+  grid-area: eb6;
+  background-color: aliceblue;
+}
+#empty-board_7 {
+  grid-area: eb7;
+  background-color: darkgreen;
+}
+#empty-board_8 {
+  grid-area: eb8;
+  background-color: rgb(194, 137, 52);
+}
+
+#arrow-up {
+  grid-area: au;
+  background-color: rgb(66, 111, 111);
+}
+#arrow-down {
+  grid-area: ad;
+  background-color: rgb(0, 255, 98);
+}
+#arrow-left {
+  grid-area: al;
+  background-color: rgb(212, 255, 0);
+}
+#arrow-right {
+  grid-area: ar;
+  background-color: rgb(85, 0, 255);
+}
+#leave {
+  grid-area: l;
+  background-color: rgb(255, 0, 255);
+}
+#tile-area {
+  grid-area: ta;
+  background-color: rgb(209, 207, 207);
+}
+#end-turn {
+  grid-area: et;
+  background-color: rgb(132, 0, 255);
+}
+
+#arrow-up,
+#arrow-left,
+#arrow-right,
+#arrow-down {
+  align-content: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+}
+
+#tile-area {
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+}
+.tile-spot {
+  background-color: rgb(209, 207, 207);
+  text-align: center;
+  width: 10vw;
+  height: 10vw;
+}
+#chat {
+  height: 10vw;
+  background-color: rgb(152, 126, 86);
+  width: 100%;
+}
