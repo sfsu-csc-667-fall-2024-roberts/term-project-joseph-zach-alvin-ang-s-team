@@ -23,10 +23,6 @@ type User = {
   created: string;
 };
 
-type UserWithPassword = User & {
-  password: string;
-};
-
 const register = async (
   username: string,
   clearTextPassword: string,
@@ -40,7 +36,10 @@ const register = async (
 const login = async (username: string, clearTextPassword: string) => {
   const user = await findbyUsername(username);
 
+  console.log(user.password);
+
   const isValid = await bcrypt.compare(clearTextPassword, user.password);
+  console.log(isValid);
   if (isValid) {
     return user;
   } else {
@@ -48,7 +47,7 @@ const login = async (username: string, clearTextPassword: string) => {
   }
 };
 
-const findbyUsername = async (username: string): Promise<UserWithPassword> => {
+const findbyUsername = async (username: string): Promise<User> => {
   return await db.one(FIND_BY_USERNAME_SQL, [username]);
 };
 

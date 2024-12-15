@@ -1,7 +1,7 @@
 import express from "express";
 import { Users } from "../db/dbmanifest";
 import flash from "express-flash";
-import session from "express-session";
+import session, { SessionData } from "express-session";
 
 const router = express.Router();
 
@@ -14,14 +14,17 @@ router.post("/register", async (request, response) => {
 
   try {
     const user = await Users.register(username, password);
-    // ts-expect-error TODO: Define the session type for the user object
-    //request.session.user = user;
+    (request.session as SessionData).user = {
+      username: user.username,
+      password: user.password,
+      created: user.created,
+    };
 
     response.redirect("/lobby");
   } catch (error) {
     console.error(error);
 
-    // request.flash("error", "Failed to register user");
+    console.log("Not working:(");
     response.redirect("/register");
   }
 });
@@ -35,14 +38,18 @@ router.post("/login", async (request, response) => {
 
   try {
     const user = await Users.login(email, password);
-    // @ts-expect-error TODO: Define the session type for the user object
-    request.session.user = user;
+    console.log(user);
+    (request.session as SessionData).user = {
+      username: user.username,
+      password: user.password,
+      created: user.created,
+    };
 
     response.redirect("/lobby");
   } catch (error) {
     console.error(error);
 
-    // request.flash("error", error as string);
+    console.log("Not working:(");
     response.redirect("/login"); // CHANFGE THIS WHEN U DO LOG IN (remove auth)
   }
 });
