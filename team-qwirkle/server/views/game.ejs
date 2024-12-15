@@ -126,30 +126,46 @@
                             <button type="button" onclick="">End Turn</button>
                         </div>
                 </section>
-                <section id="hand">
-                    <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                <section id="player-info">
+                    <div id="scoreboard">
+                        player points here
                     </div>
-                    <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                    <div id="turn-info">
+                        <div id="turn-number">
+                            turn count number here
+                        </div>
+                        <div id="current-turn">
+                            current turn player name here
+                        </div>
                     </div>
-                    <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                    <div id="hand">
+                        <div id="tile-slot">
+                            <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                        </div>
+                        <div id="tile-slot">
+                            <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                        </div>
+                        <div id="tile-slot">
+                            <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                        </div>
+                        <div id="tile-slot">
+                            <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                        </div>
+                        <div id="tile-slot">
+                            <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                        </div>
+                        <div id="tile-slot">
+                            <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                        </div>
                     </div>
-                    <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
-                    </div>
-                    <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
-                    </div>
-                    <div id="tile-slot">
-                        <img class="tile" alt="tile" src="/images/tileset/TilePieceQB1.png" width="100vw" height="100vw">
+                    <div id="tile-bag-info">
+                        tile bag tiles left here
                     </div>
                 </section>
             </section>
             <section id="sidebar">
                 <section id="chat">
-                    chat here
+                    <%- include('partials/chat') %>
                 </section>
             </section>
         </section>
