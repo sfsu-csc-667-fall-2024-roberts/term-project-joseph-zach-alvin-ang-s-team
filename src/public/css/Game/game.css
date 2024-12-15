@@ -45,64 +45,68 @@
 
 #empty-board_1 {
   grid-area: eb1;
-  background-color: aqua;
+  /*background-color: aqua;*/
 }
 #empty-board_2 {
   grid-area: eb2;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 #empty-board_3 {
   grid-area: eb3;
-  background-color: black;
+  /* background-color: black; */
 }
 #empty-board_4 {
   grid-area: eb4;
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
 }
 #empty-board_5 {
   grid-area: eb5;
-  background-color: blue;
+  /* background-color: blue; */
 }
 #empty-board_6 {
   grid-area: eb6;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
 }
 #empty-board_7 {
   grid-area: eb7;
-  background-color: darkgreen;
+  /* background-color: darkgreen; */
 }
 #empty-board_8 {
   grid-area: eb8;
-  background-color: rgb(194, 137, 52);
+  /* background-color: rgb(194, 137, 52); */
 }
 
 #arrow-up {
   grid-area: au;
-  background-color: rgb(66, 111, 111);
+  /* background-color: rgb(66, 111, 111); */
 }
 #arrow-down {
   grid-area: ad;
-  background-color: rgb(0, 255, 98);
+  /* background-color: rgb(0, 255, 98); */
 }
 #arrow-left {
   grid-area: al;
-  background-color: rgb(212, 255, 0);
+  /* background-color: rgb(212, 255, 0); */
 }
 #arrow-right {
   grid-area: ar;
-  background-color: rgb(85, 0, 255);
+  /* background-color: rgb(85, 0, 255); */
 }
 #leave {
   grid-area: l;
-  background-color: rgb(255, 0, 255);
+  /* background-color: rgb(255, 0, 255); */
 }
 #tile-area {
   grid-area: ta;
-  background-color: rgb(209, 207, 207);
+  background-color: rgb(197, 156, 156);
+  gap: 1vw;
+  padding: 1vw;
+  display: grid;
+  grid-template-columns: repeat(8, auto);
 }
 #end-turn {
   grid-area: et;
-  background-color: rgb(132, 0, 255);
+  /* background-color: rgb(132, 0, 255); */
 }
 
 #arrow-up,
@@ -115,18 +119,14 @@
   background: transparent;
 }
 
-#tile-area {
-  display: grid;
-  grid-template-columns: repeat(8, auto);
-}
 .tile-spot {
   background-color: rgb(209, 207, 207);
   text-align: center;
-  width: 10vw;
-  height: 10vw;
+  width: 8vw;
+  height: 8vw;
 }
 #chat {
+  width: 100%;
   height: 10vw;
   background-color: rgb(152, 126, 86);
-  width: 100%;
 }
