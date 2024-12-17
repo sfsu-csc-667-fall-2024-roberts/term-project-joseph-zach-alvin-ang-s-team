@@ -1,7 +1,6 @@
 import express from "express";
 import { Users } from "../db/dbmanifest";
-import flash from "express-flash";
-import session, { SessionData } from "express-session";
+import { SessionData } from "express-session";
 
 const router = express.Router();
 
@@ -14,6 +13,8 @@ router.post("/register", async (request, response) => {
 
   try {
     const user = await Users.register(username, password);
+
+    // @ts-expect-error TODO
     (request.session as SessionData).user = {
       username: user.username,
       password: user.password,
@@ -39,6 +40,7 @@ router.post("/login", async (request, response) => {
   try {
     const user = await Users.login(email, password);
     console.log(user);
+    // @ts-expect-error TODO
     (request.session as SessionData).user = {
       username: user.username,
       password: user.password,
