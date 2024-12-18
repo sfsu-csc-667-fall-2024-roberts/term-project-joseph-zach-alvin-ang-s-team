@@ -8,7 +8,7 @@ const authenticationMiddleware = (
   if (!request.session) {
     response.redirect("/auth/login");
   } else {
-    response.locals.user = request.session as SessionData;
+    response.locals.user = (request.session as SessionData).user;
     next();
   }
 };
