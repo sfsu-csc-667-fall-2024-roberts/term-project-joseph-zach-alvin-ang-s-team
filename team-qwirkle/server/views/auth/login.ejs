@@ -1,71 +1,72 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <title>Login</title>
-        <style>
-            #input-form {
-                background-color: darkturquoise;
-                border-style: solid;
-                border-radius: 5%;
-                padding: 5%;
-            }
-            #input-form > form{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            #input-form > form > div {
-                width: 25%;
-            }
-            p, h1, div, label {
-                text-shadow: 2px 2px 5px rgb(0, 0, 0);
-                font-size:xx-large;
-                text-align: center;
-            }
-            label,input{
-                display:flex;
-                flex-direction: column;
-                margin:0 auto;
-            }
-            #email, #password, #submit{
-                box-shadow: 5px 5px rgb(87, 87, 87);
-                text-align: center;
-            }
-        </style>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/src/public/css/style.css" />
-    </head>
-	<body>
-		<section id = "input-form">
-			<form method="post" action="/auth/login">
-                <div>
-                    <h1> Qwirkle</h1>
-                </div>
-				<div>
-                    <label>Username</label>
-					<input
-					type="username"
-					 id="username"
-					 name="username"
-					 placeholder="Choose your username"
-					 required
-					/>
-				</div>
-				<div>
-					<label>Password</label>
-					<input 
-                    type="password" 
-                    id="password" 
-                    name="password"
-					required />
-                </div>
-                <div>
-					<button 
-                    type="submit" 
-                    id="submit">Login</button>
-				</div>
-			</form>
-		</section>
-	</body>
+
+<head>
+    <title>Login</title>
+    <style>
+        #input-form {
+            background-color: darkturquoise;
+            border-style: solid;
+            border-radius: 5%;
+            padding: 5%;
+        }
+
+        #input-form>form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #input-form>form>div {
+            width: 25%;
+        }
+
+        p,
+        h1,
+        div,
+        label {
+            text-shadow: 2px 2px 5px rgb(0, 0, 0);
+            font-size: xx-large;
+            text-align: center;
+        }
+
+        label,
+        input {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        #email,
+        #password,
+        #submit {
+            box-shadow: 5px 5px rgb(87, 87, 87);
+            text-align: center;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <section id="input-form">
+        <form method="post" action="/auth/login">
+            <div>
+                <h1> Qwirkle</h1>
+            </div>
+            <div>
+                <label>Username</label>
+                <input type="text" id="email" name="email" placeholder="your username" required />
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div>
+                <button type="submit" id="submit">Login</button>
+            </div>
+        </form>
+    </section>
+</body>
+
 </html>

@@ -1,14 +1,8 @@
 import pgp from "pg-promise";
-require("dotenv").config();
+import dotenv from "dotenv";
 
-const connection = pgp();
+dotenv.config();
 
-const db = connection({
-  user: process.env.usernameDB,
-  host: process.env.DATABASE_URL,
-  database: process.env.database,
-  password: process.env.password,
-  port: Number(process.env.port),
-});
+const connection = pgp()(process.env.DATABASE_URL!);
 
-export default db;
+export default connection;

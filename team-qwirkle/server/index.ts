@@ -8,17 +8,18 @@ import * as configuration from "./config";
 import * as routes from "./routes";
 import * as middleware from "./middleware";
 
-import connectLiveReload from "connect-livereload";
-import livereload from "livereload";
-
-require("dotenv").config();
-
 dotenv.config();
 
 const app = express();
 //const flash = require("express-flash");
 //const session = require("express-session");
 const PORT = process.env.PORT || 3000;
+
+const staticPath = path.join(process.cwd(), "src", "public");
+app.use(express.static(staticPath));
+
+configuration.configureLiveReload(app, staticPath);
+configuration.configureSession(app);
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -45,9 +46,3 @@ app.use((_request, _response, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-const staticPath = path.join(process.cwd(), "src", "public");
-app.use(express.static(staticPath));
-console.log("working\n");
-
-configuration.configureLiveReload(app, staticPath);

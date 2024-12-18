@@ -10,7 +10,10 @@
     "server:dev": "nodemon --exec ts-node team-qwirkle/server/index.ts --ext js,css,ejs --ignore src/public/js",
     "build:dev": "webpack build --mode development --watch",
     "prepare": "husky",
-    "build": "webpack build"
+    "build": "webpack build",
+    "db:create": "node-pg-migrate create -j ts --",
+    "db:migrate": "ts-node node_modules/node-pg-migrate/bin/node-pg-migrate.js up -j ts",
+    "db:rollback": "ts-node node_modules/node-pg-migrate/bin/node-pg-migrate.js down -j ts"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +38,7 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "livereload": "^0.9.3",
+    "node-pg-migrate": "^7.8.0",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
