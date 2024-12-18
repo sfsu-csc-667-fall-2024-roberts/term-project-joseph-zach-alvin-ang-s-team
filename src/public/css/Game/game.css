@@ -133,9 +133,15 @@
   padding: 1vw;
 }
 
-#scoreboard {
+.scoreboard {
   background-color: rgb(209, 207, 207);
   grid-area: sb;
+}
+
+.scoreboard,
+tr,
+td {
+  border: 1px solid black;
 }
 
 #turn-info {
