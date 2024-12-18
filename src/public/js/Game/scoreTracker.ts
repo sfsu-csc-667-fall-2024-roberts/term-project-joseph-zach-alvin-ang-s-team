@@ -1,1 +1,1 @@
-const Scoreboard = document.getElementsByClassName("scoreboard");
+const scoreboard = document.getElementsByClassName("scoreboard");

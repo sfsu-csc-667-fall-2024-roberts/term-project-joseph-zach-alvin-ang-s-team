@@ -138,6 +138,12 @@
   grid-area: sb;
 }
 
+.scoreboard,
+tr,
+td {
+  border: 1px solid black;
+}
+
 #turn-info {
   background-color: rgb(209, 207, 207);
   grid-area: ti;

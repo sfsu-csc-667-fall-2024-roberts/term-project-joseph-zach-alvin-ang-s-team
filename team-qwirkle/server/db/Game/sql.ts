@@ -33,3 +33,52 @@ OFFSET $2
 export const GET_PLAYER_COUNT = `
   SELECT COUNT(*) FROM game_users WHERE game_id = $1
 `;
+
+export const INSERT_INITIAL_TILES = `
+INSERT INTO game_cards (game_id, card_id, user_id, position, pile)
+SELECT $1, id, 0, uuid_generate_v4(), -1 FROM cards
+`;
+
+export const DEAL_TILES = `
+UPDATE game_cards 
+SET user_id = $1, pile = $2 WHERE game_id = $3 AND user_id = 0 AND position IN (
+  SELECT position FROM game_cards WHERE game_id = $3 AND user_id = 0 ORDER BY position LIMIT $4
+) RETURNING card_id`;
+
+export const AVAILABLE_TILES_FOR_GAME = `
+SELECT COUNT(*) FROM game_cards WHERE game_id = $1 AND user_id = 0
+`;
+
+export const UPDATE_DRAW_TURN = `
+UPDATE game_users 
+SET last_draw_turn = (SELECT turn FROM games WHERE id = $1) 
+WHERE game_id = $1 AND user_id = $2`;
+
+export const IS_CURRENT = `
+  SELECT games.current_seat = game_users.seat AS is_current_player
+    FROM games, game_users
+    WHERE games.id = $1
+    AND game_users.user_id = $2
+    AND game_users.game_id = games.id`;
+
+// Cards in hand
+export const GET_PLAYER_HAND = `
+SELECT * FROM game_cards, cards 
+WHERE game_cards.user_id=$1 
+  AND game_cards.game_id=$2 
+  AND game_cards.card_id=cards.id 
+  AND pile=$3
+ORDER BY position DESC
+`;
+
+export const GET_LAST_DRAW_TURN = `
+SELECT last_draw_turn 
+FROM game_users 
+WHERE game_id=$1 
+  AND user_id=$2`;
+
+export const UPDATE_PLAYER_DRAW_TURN = `
+UPDATE game_users 
+SET last_draw_turn = (SELECT turn FROM games WHERE id=$1) 
+WHERE game_id=$1 
+  AND user_id=$2`;
