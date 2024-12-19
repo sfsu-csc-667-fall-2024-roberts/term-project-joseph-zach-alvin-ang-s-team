@@ -72,13 +72,19 @@ type game = {
 };
 
 //idk what im doing here
+
 const createNewGame = async (
+  //this stuff is the parameters the function takes in
+  //will tweak at some point
   player_id: number,
   tile_bag_id: number,
   grid_id: number,
   status: number,
 ): Promise<game> => {
+  //promises do stuff given a type? actual function stuff is handled here tho
+  //get game id first by creating a game
   const { game_id } = await db.one<game>(CREATE_GAME);
+  //return whatever CREATE_GAME spits out and give it all of the parameters to plug into the table
   return await db.one(CREATE_GAME, [
     game_id,
     player_id,
