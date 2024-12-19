@@ -79,15 +79,13 @@ type lobby = {
   player_count: number;
 };
 
-//these 3 fucking things chain into each other stupid fucking code
 const createNewLobby = async (player_id: number): Promise<lobby> => {
-  //stupid ass lobby code that i hoep works
-  const { lobby_id } = await db.one(CREATE_LOBBY); //gets loddy id to send to join
+  const { lobby_id } = await db.one(CREATE_LOBBY); //gets lobby id to send to join
   return await join(lobby_id, player_id); //send in both for the dude whos hosting
 };
 
 //lobby_id is automatic for host
-//for ppl joining idk man get it somehow from something set in lobby
+//for ppl joining get it somehow from something set in lobby
 const join = async (lobby_id: number, playerId: number) => {
   const gameDescription = await db.one<lobby>(ADD_PLAYER, [lobby_id, playerId]);
 
