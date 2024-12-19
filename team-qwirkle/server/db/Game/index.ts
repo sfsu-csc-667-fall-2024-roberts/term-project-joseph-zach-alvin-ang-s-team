@@ -119,8 +119,8 @@ const getPlayerCount = async (gameId: number): Promise<number> => {
   );
 };
 
-const drawCard = async (gameId: number, userId: number) => {
-  const availableCards = parseInt(
+const drawTile = async (gameId: number, userId: number) => {
+  const availableTiles = parseInt(
     (await db.one<{ count: string }>(AVAILABLE_TILES_FOR_GAME, gameId)).count,
   );
 
@@ -191,4 +191,21 @@ const getLastDrawTurn = async (
 
 const updatePlayerDrawTurn = async (gameId: number, userId: number) => {
   return db.none(UPDATE_PLAYER_DRAW_TURN, [gameId, userId]);
+};
+
+export default {
+  createNewGame,
+  join,
+  availableGames,
+  getPlayerCount,
+  drawTile,
+  incrementTurn,
+  getTurn,
+  playCard,
+  playerGames,
+  get,
+  isCurrentPlayer,
+  getPlayerHand,
+  getLastDrawTurn,
+  updatePlayerDrawTurn,
 };

@@ -51,4 +51,8 @@ const findbyUsername = async (username: string): Promise<User> => {
   return await db.one(FIND_BY_USERNAME_SQL, [username]);
 };
 
-export default { register, login, findbyUsername };
+export default {
+  register,
+  login,
+  findbyUsername,
+};
