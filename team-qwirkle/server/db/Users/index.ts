@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import db from "../connection";
 import { FIND_BY_USERNAME_SQL, REGISTER_SQL } from "./sql";
-import { StringLiteral } from "typescript";
 
 function getSQLTimestamp(): string {
   const now: Date = new Date();
@@ -21,6 +20,7 @@ type User = {
   username: string;
   password: string;
   created: string;
+  id: number;
 };
 
 const register = async (
@@ -29,8 +29,9 @@ const register = async (
 ): Promise<User> => {
   const password = await bcrypt.hash(clearTextPassword, 10);
   const created = getSQLTimestamp();
+  const id = -1;
   console.log("index debug");
-  return await db.one(REGISTER_SQL, [username, password, created]);
+  return await db.one(REGISTER_SQL, [username, password, created, id]);
 };
 
 const login = async (username: string, clearTextPassword: string) => {

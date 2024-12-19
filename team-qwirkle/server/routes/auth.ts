@@ -18,6 +18,7 @@ router.post("/register", async (request, response) => {
       username: user.username,
       password: user.password,
       created: user.created,
+      id: user.id,
     };
 
     response.redirect("/lobbyfinder");
@@ -43,6 +44,7 @@ router.post("/login", async (request, response) => {
       username: user.username,
       password: user.password,
       created: user.created,
+      id: user.id,
     };
 
     response.redirect("/lobbyfinder");
