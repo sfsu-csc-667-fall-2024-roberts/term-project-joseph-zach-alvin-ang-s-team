@@ -3,6 +3,7 @@ import db from "../connection";
 import {
   FIND_BY_USERNAME_SQL,
   REGISTER_SQL,
+  CREATE_LOBBY,
   CREATE_GAME,
   ADD_PLAYER,
   AVAILABLE_GAMES,
@@ -71,36 +72,27 @@ type game = {
   status: number;
 };
 
-//idk what im doing here
-
-const createNewGame = async (
-  //this stuff is the parameters the function takes in
-  //will tweak at some point
-  player_id: number,
-  tile_bag_id: number,
-  grid_id: number,
-  status: number,
-): Promise<game> => {
-  //promises do stuff given a type? actual function stuff is handled here tho
-  //get game id first by creating a game
-  const { game_id } = await db.one<game>(CREATE_GAME);
-  //return whatever CREATE_GAME spits out and give it all of the parameters to plug into the table
-  return await db.one(CREATE_GAME, [
-    game_id,
-    player_id,
-    tile_bag_id,
-    grid_id,
-    status,
-  ]);
+type lobby = {
+  lobby_id: number;
+  game_id: number;
+  lobby_password: number;
+  player_count: number;
 };
 
-const join = async (gameId: number, playerId: number) => {
-  const gameDescription = await db.one<game>(ADD_PLAYER, [gameId, playerId]);
+const createNewLobby = async (player_id: number): Promise<lobby> => {
+  const { lobby_id } = await db.one(CREATE_LOBBY); //gets lobby id to send to join
+  return await join(lobby_id, player_id); //send in both for the dude whos hosting
+};
+
+//lobby_id is automatic for host
+//for ppl joining get it somehow from something set in lobby
+const join = async (lobby_id: number, playerId: number) => {
+  const gameDescription = await db.one<lobby>(ADD_PLAYER, [lobby_id, playerId]);
 
   // Pile 0 is the player's hand
-  await db.any(DEAL_TILES, [playerId, 0, gameId, 7]);
+  // await db.any(DEAL_TILES, [playerId, 0, gameId, 7]);
   // Pile -1 is the player's play pile
-  await db.any(DEAL_TILES, [playerId, -1, gameId, 20]);
+  // await db.any(DEAL_TILES, [playerId, -1, gameId, 20]);
 
   return gameDescription;
 };
@@ -137,12 +129,17 @@ const drawTile = async (gameId: number, userId: number) => {
   return card;
 };
 
+// updated
 const incrementTurn = async (gameId: number) => {
-  return db.none("UPDATE games SET turn = turn + 1 WHERE id = $1", gameId);
+  return db.none(
+    "UPDATE game SET total_turns = total_turns + 1 WHERE id = $1",
+    gameId,
+  );
 };
 
+// updated
 const getTurn = async (gameId: number) => {
-  return db.one("SELECT turn FROM games WHERE id = $1", gameId);
+  return db.one("SELECT current_turn FROM game WHERE id = $1", gameId);
 };
 
 // user_id: -1 for top of discard pile, -2 for bottom of discard pile
@@ -200,7 +197,7 @@ const updatePlayerDrawTurn = async (gameId: number, userId: number) => {
 };
 
 export default {
-  createNewGame,
+  createNewLobby,
   join,
   availableGames,
   getPlayerCount,

@@ -8,17 +8,27 @@ export const FIND_BY_USERNAME_SQL = `
 SELECT * FROM account WHERE username = $1
 `;
 
-export const CREATE_GAME = `
-INSERT INTO games DEFAULT VALUES RETURNING *, 1 as players
+export const CREATE_LOBBY = `
+INSERT INTO lobby 
+DEFAULT VALUES 
+RETURNING $1
 `;
 
+export const CREATE_GAME = `
+INSERT INTO game (player_id)
+VALUES ($2)
+RETURNING *
+`;
+
+// check if it works
 export const ADD_PLAYER = `
-INSERT INTO game_users (game_id, user_id, seat)
-VALUES ($1, $2, (SELECT COUNT(*) FROM game_users WHERE game_id = $1) + 1)
+INSERT INTO player (lobby_id, player_id)
+VALUES ($1, $2)
 RETURNING 
-  game_id AS id, 
-  (SELECT COUNT(*) FROM game_users WHERE game_id = $1) AS players,
-  (SELECT player_count FROM games WHERE id = $1) AS player_count
+  lobby_id AS id, 
+  (SELECT $4 FROM lobby WHERE id = $1) AS player_count,
+  UPDATE player_count 
+  SET player_count = player_count + 1
 `;
 
 export const AVAILABLE_GAMES = `
@@ -31,7 +41,7 @@ OFFSET $2
 `;
 
 export const GET_PLAYER_COUNT = `
-  SELECT COUNT(*) FROM game_users WHERE game_id = $1
+  SELECT COUNT(*) FROM game_users WHERE lobby_id = $1
 `;
 
 export const INSERT_INITIAL_TILES = `
@@ -54,8 +64,9 @@ UPDATE game_users
 SET last_draw_turn = (SELECT turn FROM games WHERE id = $1) 
 WHERE game_id = $1 AND user_id = $2`;
 
+// wip updating
 export const IS_CURRENT = `
-  SELECT games.current_seat = game_users.seat AS is_current_player
+  SELECT games.current_turn = game_users.seat AS is_current_player
     FROM games, game_users
     WHERE games.id = $1
     AND game_users.user_id = $2
