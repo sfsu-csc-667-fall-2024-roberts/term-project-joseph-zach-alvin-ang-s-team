@@ -6,18 +6,24 @@
 
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/src/public/css/style.css" />
+        <!-- <link rel="stylesheet" href="/src/public/css/style.css" /> -->
     </head>
 
     <body>
         <div class="search-container">
-            <form action="/">
-              <input type="text" placeholder="Search.." name="search">
-              <button type="submit">Submit</button>
+            <form id="searchForm" method="post" action="/lobbyfinder/">
+                <label for="userInput">Enter a code:</label>
+                <input type="text" id="userInput" name="userInput" required>
+                <button type="submit">Submit</button>
             </form>
 
-            <button type="button">Create Lobby</button>
+            <form method="post" action="/games/create">
+                <button>Create Lobby</button>
+            </form>
             <button type="button">Log out</button>
 
     </body>
+
+    <script>
+    </script>
 </html>

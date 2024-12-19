@@ -1,5 +1,4 @@
-/*
-const form = document.querySelector<HTMLFormElement>("#chat-section form")!;
+/* const form = document.querySelector<HTMLFormElement>("#chat-area form")!;
 const input = document.querySelector<HTMLInputElement>("input#chat-message")!;
 const messageArea =
   document.querySelector<HTMLUListElement>("#chat-section ul")!;
@@ -39,13 +38,9 @@ window.socket.on(
     const messageElement = messageTemplate.content.cloneNode(
       true,
     ) as HTMLElement;
-    messageElement.querySelector("img")!.src =
-      `https://www.gravatar.com/avatar/${gravatar}`;
-    messageElement.querySelector("img")!.alt = sender;
     messageElement.querySelector("span")!.textContent = message;
 
     messageArea.appendChild(messageElement);
     messageArea.scrollTo(0, messageArea.scrollHeight);
   },
-);
-*/
+); */

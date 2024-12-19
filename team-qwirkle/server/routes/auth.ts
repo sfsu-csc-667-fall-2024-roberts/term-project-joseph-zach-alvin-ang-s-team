@@ -20,7 +20,7 @@ router.post("/register", async (request, response) => {
       created: user.created,
     };
 
-    response.redirect("/lobby");
+    response.redirect("/lobbyfinder");
   } catch (error) {
     console.error(error);
 
@@ -45,7 +45,7 @@ router.post("/login", async (request, response) => {
       created: user.created,
     };
 
-    response.redirect("/lobby");
+    response.redirect("/lobbyfinder");
   } catch (error) {
     console.error(error);
 

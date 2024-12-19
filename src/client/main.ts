@@ -1,4 +1,4 @@
-/* import { io, Socket } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 
 declare global {
   interface Window {
@@ -20,4 +20,3 @@ declare global {
 // }
 
 window.socket = io();
-*/
