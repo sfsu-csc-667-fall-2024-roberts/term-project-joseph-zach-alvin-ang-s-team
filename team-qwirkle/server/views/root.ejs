@@ -1,13 +1,23 @@
 <html>
  <head>
- <title>Hello</title>
+ <title>Home Page</title>
  </head>
+<style>
+    button{
+    background-color: #a0c464;
+    color:black;
+    text-align: center;
+    }
+</style>
+
  <body>
  <p>This is the root page. <%= name %>.</p><br>
  <p>From here, users would be directed to login if they are not already.</p>
+ <a href="login"><button>login link</button></a><br>
+ <a href="register"><button>register link</button></a><br>
+
+ <p>Below is for dev usage</p>
  <a href="lobby?code=hello">lobby link</a><br>
- <a href="login">login link</a><br>
- <a href="register">register link</a><br>
  <a href="game">game link</a><br>
  <a href="lobbyfinder">lobby finder link</a><br>
  <script src="/js/main.js"></script>
