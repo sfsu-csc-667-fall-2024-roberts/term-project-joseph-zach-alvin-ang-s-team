@@ -34,6 +34,7 @@ export const GET_PLAYER_COUNT = `
   SELECT COUNT(*) FROM game_users WHERE game_id = $1
 `;
 
+// needs overhaul
 export const INSERT_INITIAL_TILES = `
 INSERT INTO game_cards (game_id, card_id, user_id, position, pile)
 SELECT $1, id, 0, uuid_generate_v4(), -1 FROM cards
@@ -54,6 +55,7 @@ UPDATE game_users
 SET last_draw_turn = (SELECT turn FROM games WHERE id = $1) 
 WHERE game_id = $1 AND user_id = $2`;
 
+// checks for current player (needs modification)
 export const IS_CURRENT = `
   SELECT games.current_seat = game_users.seat AS is_current_player
     FROM games, game_users
@@ -61,7 +63,7 @@ export const IS_CURRENT = `
     AND game_users.user_id = $2
     AND game_users.game_id = games.id`;
 
-// Cards in hand
+// make it so that it retrieves the hand id
 export const GET_PLAYER_HAND = `
 SELECT * FROM game_cards, cards 
 WHERE game_cards.user_id=$1 

@@ -28,12 +28,10 @@ window.socket.on(
   ({
     message,
     sender,
-    gravatar,
   }: {
     message: string;
     sender: string;
     timestamp: string;
-    gravatar: string;
   }) => {
     const messageElement = messageTemplate.content.cloneNode(
       true,
