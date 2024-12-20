@@ -20,7 +20,7 @@ type User = {
   username: string;
   password: string;
   created: string;
-  id: number;
+  account_id: number;
 };
 
 const register = async (
@@ -37,10 +37,7 @@ const register = async (
 const login = async (username: string, clearTextPassword: string) => {
   const user = await findbyUsername(username);
 
-  console.log(user.password);
-
   const isValid = await bcrypt.compare(clearTextPassword, user.password);
-  console.log(isValid);
   if (isValid) {
     return user;
   } else {

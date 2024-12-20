@@ -18,7 +18,7 @@ router.post("/register", async (request, response) => {
       username: user.username,
       password: user.password,
       created: user.created,
-      id: user.id,
+      account_id: user.account_id,
     };
 
     response.redirect("/lobbyfinder");
@@ -39,12 +39,11 @@ router.post("/login", async (request, response) => {
 
   try {
     const user = await Users.login(email, password);
-    console.log(user);
     (request.session as SessionData).user = {
       username: user.username,
       password: user.password,
       created: user.created,
-      id: user.id,
+      account_id: user.account_id,
     };
 
     response.redirect("/lobbyfinder");
