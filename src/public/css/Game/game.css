@@ -158,7 +158,7 @@ td {
   justify-content: center;
 }
 
-.tile-bag-info {
+#tile-bag-info {
   background-color: rgb(209, 207, 207);
   grid-area: tb;
 }

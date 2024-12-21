@@ -1,11 +1,11 @@
 import { io, Socket } from "socket.io-client";
 
-// declare global {
-//   interface Window {
-//     socket: Socket;
-//     roomId: number;
-//   }
-// }
+declare global {
+  interface Window {
+    socket: Socket;
+    roomId: number;
+  }
+}
 
 // declare module "express-session" {
 //   interface SessionData {
@@ -19,4 +19,4 @@ import { io, Socket } from "socket.io-client";
 //   }
 // }
 
-// window.socket = io();
+window.socket = io();

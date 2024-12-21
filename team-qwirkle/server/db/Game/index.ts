@@ -149,6 +149,10 @@ const getTurn = async (gameId: number) => {
   return db.one("SELECT current_turn FROM game WHERE game_id = $1", gameId);
 };
 
+const getTotalTurns = async (gameId: number) => {
+  return db.one("SELECT total_turns FROM game WHERE game_id = $1", gameId);
+};
+
 // user_id: -1 for top of discard pile, -2 for bottom of discard pile
 // N: -3, E: -4, S: -5, W: -6
 const playCard = async () =>
@@ -203,13 +207,12 @@ const updatePlayerTurn = async (gameId: number, userId: number) => {
   return db.none(UPDATE_PLAYER_TURN, [gameId, userId]);
 };
 
-const getTileBagInfo = async (
-  gameId: number,
-): Promise<{ tile_amount: number }> => {
+const getTileBagInfo = async (gameId: number): Promise<string> => {
   const { tile_bag_id } = await db.one(
     "SELECT tile_bag_id FROM game WHERE game_id = $1",
     gameId,
   );
+
   return await db.one(
     "SELECT tile_amount FROM tile_bag WHERE tile_bag_id = $1",
     tile_bag_id,
@@ -223,6 +226,7 @@ export default {
   drawTile,
   incrementTurn,
   getTurn,
+  getTotalTurns,
   playCard,
   playerGames,
   get,
