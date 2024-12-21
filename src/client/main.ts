@@ -7,16 +7,4 @@ declare global {
   }
 }
 
-// declare module "express-session" {
-//   interface SessionData {
-//     user: {
-//       id: number;
-//       username: string;
-//       email: string;
-//       gravatar: string;
-//     };
-//     roomId: number;
-//   }
-// }
-
-window.socket = io();
+window.socket = io("http://localhost:5001");
