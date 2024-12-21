@@ -1,5 +1,5 @@
 /* const form = document.querySelector<HTMLFormElement>("#chat-area form")!;
-const input = document.querySelector<HTMLInputElement>("input#chat-message")!;
+const input = document.querySelector<HTMLInputElement>("#chat-message")!;
 const messageArea =
   document.querySelector<HTMLUListElement>("#chat-section ul")!;
 const messageTemplate = document.querySelector<HTMLTemplateElement>(
