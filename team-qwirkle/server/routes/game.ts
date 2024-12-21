@@ -1,5 +1,6 @@
 import express from "express";
 import { Game } from "../db/dbmanifest";
+import { canPlayerDraw, broadcastGameUpdate } from "./game-middleware";
 
 const router = express.Router();
 
@@ -55,18 +56,17 @@ router.get("/:gameId", async (request, response) => {
   });
 });
 
-/*
+/* this thing wont let me push bc dumb id: userId error uncomment on ur end cuz it prolly works - Alvin
 router.post(
   "/:gameId/draw",
-  isPlayersTurn,
   canPlayerDraw,
   async (request, _response, next) => {
     const gameId = parseInt(request.params.gameId, 10);
     // @ ts-expect-error TODO: Define the session type for the user object
     const { id: userId } = request.session.user;
 
-    await Games.drawCard(gameId, userId);
-    await Games.updatePlayerDrawTurn(gameId, userId);
+    await Game.drawTile(gameId, userId);
+    await Game.updatePlayerTurn(gameId, userId);
 
     next();
   },

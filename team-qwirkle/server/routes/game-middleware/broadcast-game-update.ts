@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import { Game } from "../../db/dbmanifest";
 
-/*
 export const broadcastGameUpdate = async (
   request: Request,
   response: Response,
   next: NextFunction,
 ) => {
+  /*
   const gameId = parseInt(request.params.gameId, 10);
 
   const playerData = await Game.getPlayers(gameId);
@@ -24,7 +24,7 @@ export const broadcastGameUpdate = async (
       },
     });
   }
+    */
 
   next();
 };
-*/

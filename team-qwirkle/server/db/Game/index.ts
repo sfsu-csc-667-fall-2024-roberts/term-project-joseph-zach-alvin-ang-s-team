@@ -77,6 +77,7 @@ type lobby = {
   player_count: number;
 };
 
+/*i dont think we need these cuz its handled in lobby/index.ts or smth
 const createNewGame = async (account_id: number): Promise<lobby> => {
   const { lobby_id } = await db.one(CREATE_GAME); //gets lobby id to send to join
   return await join(lobby_id, account_id); //send in both for the dude whos hosting
@@ -97,6 +98,7 @@ const join = async (lobby_id: number, account_id: number) => {
 
   return gameDescription;
 };
+*/
 
 const availableGames = async (
   limit: number = 20,
@@ -115,7 +117,7 @@ const availableGames = async (
 //0 is not started
 //1 is started
 const startGame = async (gameId: number) => {
-  return db.none("UPDATE game SET status = 1 WHERE id = $1", gameId);
+  return db.none("UPDATE game SET status = 1 WHERE game_id = $1", gameId);
 };
 
 const getPlayerCount = async (lobby_id: number): Promise<number> => {
@@ -137,14 +139,14 @@ const drawTile = async (gameId: number, userId: number) => {
 // updated
 const incrementTurn = async (gameId: number) => {
   return db.none(
-    "UPDATE game SET total_turns = total_turns + 1 WHERE id = $1",
+    "UPDATE game SET total_turns = total_turns + 1 WHERE game_id = $1",
     gameId,
   );
 };
 
 // updated
 const getTurn = async (gameId: number) => {
-  return db.one("SELECT current_turn FROM game WHERE id = $1", gameId);
+  return db.one("SELECT current_turn FROM game WHERE game_id = $1", gameId);
 };
 
 // user_id: -1 for top of discard pile, -2 for bottom of discard pile
@@ -201,9 +203,20 @@ const updatePlayerTurn = async (gameId: number, userId: number) => {
   return db.none(UPDATE_PLAYER_TURN, [gameId, userId]);
 };
 
+const getTileBagInfo = async (
+  gameId: number,
+): Promise<{ tile_amount: number }> => {
+  const { tile_bag_id } = await db.one(
+    "SELECT tile_bag_id FROM game WHERE game_id = $1",
+    gameId,
+  );
+  return await db.one(
+    "SELECT tile_amount FROM tile_bag WHERE tile_bag_id = $1",
+    tile_bag_id,
+  );
+};
+
 export default {
-  createNewGame,
-  join,
   availableGames,
   startGame,
   getPlayerCount,
@@ -217,4 +230,5 @@ export default {
   getPlayerHand,
   getLastTurn,
   updatePlayerTurn,
+  getTileBagInfo,
 };
