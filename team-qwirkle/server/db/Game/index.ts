@@ -2,8 +2,6 @@ import bcrypt from "bcrypt";
 import db from "../connection";
 import {
   FIND_BY_USERNAME_SQL,
-  REGISTER_SQL,
-  CREATE_LOBBY,
   CREATE_GAME,
   ADD_PLAYER,
   AVAILABLE_GAMES,
@@ -11,11 +9,11 @@ import {
   INSERT_INITIAL_TILES,
   DEAL_TILES,
   AVAILABLE_TILES_FOR_GAME,
-  UPDATE_DRAW_TURN,
+  UPDATE_TURN,
   IS_CURRENT,
   GET_PLAYER_HAND,
-  GET_LAST_DRAW_TURN,
-  UPDATE_PLAYER_DRAW_TURN,
+  GET_LAST_TURN,
+  UPDATE_PLAYER_TURN,
 } from "./sql";
 import { StringLiteral } from "typescript";
 
@@ -79,15 +77,18 @@ type lobby = {
   player_count: number;
 };
 
-const createNewLobby = async (player_id: number): Promise<lobby> => {
-  const { lobby_id } = await db.one(CREATE_LOBBY); //gets lobby id to send to join
-  return await join(lobby_id, player_id); //send in both for the dude whos hosting
+const createNewGame = async (account_id: number): Promise<lobby> => {
+  const { lobby_id } = await db.one(CREATE_GAME); //gets lobby id to send to join
+  return await join(lobby_id, account_id); //send in both for the dude whos hosting
 };
 
 //lobby_id is automatic for host
 //for ppl joining get it somehow from something set in lobby
-const join = async (lobby_id: number, playerId: number) => {
-  const gameDescription = await db.one<lobby>(ADD_PLAYER, [lobby_id, playerId]);
+const join = async (lobby_id: number, account_id: number) => {
+  const gameDescription = await db.one<lobby>(ADD_PLAYER, [
+    lobby_id,
+    account_id,
+  ]);
 
   // Pile 0 is the player's hand
   // await db.any(DEAL_TILES, [playerId, 0, gameId, 7]);
@@ -110,11 +111,15 @@ const availableGames = async (
   return db.any(AVAILABLE_GAMES, [limit, offset]);
 };
 
-const getPlayerCount = async (gameId: number): Promise<number> => {
-  return parseInt(
-    (await db.one<{ count: string }>(GET_PLAYER_COUNT, gameId)).count,
-    10,
-  );
+//update game status
+//0 is not started
+//1 is started
+const startGame = async (gameId: number) => {
+  return db.none("UPDATE game SET status = 1 WHERE id = $1", gameId);
+};
+
+const getPlayerCount = async (lobby_id: number): Promise<number> => {
+  return db.one(GET_PLAYER_COUNT, [lobby_id]);
 };
 
 const drawTile = async (gameId: number, userId: number) => {
@@ -122,11 +127,11 @@ const drawTile = async (gameId: number, userId: number) => {
     (await db.one<{ count: string }>(AVAILABLE_TILES_FOR_GAME, gameId)).count,
   );
 
-  const card = db.one<{ card_id: string }>(DEAL_TILES, [userId, 0, gameId, 1]);
+  const tile = db.one<{ tile_id: string }>(DEAL_TILES, [userId, 0, gameId, 1]);
 
-  await db.none(UPDATE_DRAW_TURN, [gameId, userId]);
+  await db.none(UPDATE_TURN, [gameId, userId]);
 
-  return card;
+  return tile;
 };
 
 // updated
@@ -185,21 +190,22 @@ const getPlayerHand = async (gameId: number, playerId: number) => {
   return await db.any(GET_PLAYER_HAND, [playerId, gameId, 0]);
 };
 
-const getLastDrawTurn = async (
+const getLastTurn = async (
   gameId: number,
   userId: number,
-): Promise<{ last_draw_turn: number }> => {
-  return await db.one(GET_LAST_DRAW_TURN, [gameId, userId]);
+): Promise<{ last_turn: number }> => {
+  return await db.one(GET_LAST_TURN, [gameId, userId]);
 };
 
-const updatePlayerDrawTurn = async (gameId: number, userId: number) => {
-  return db.none(UPDATE_PLAYER_DRAW_TURN, [gameId, userId]);
+const updatePlayerTurn = async (gameId: number, userId: number) => {
+  return db.none(UPDATE_PLAYER_TURN, [gameId, userId]);
 };
 
 export default {
-  createNewLobby,
+  createNewGame,
   join,
   availableGames,
+  startGame,
   getPlayerCount,
   drawTile,
   incrementTurn,
@@ -209,6 +215,6 @@ export default {
   get,
   isCurrentPlayer,
   getPlayerHand,
-  getLastDrawTurn,
-  updatePlayerDrawTurn,
+  getLastTurn,
+  updatePlayerTurn,
 };

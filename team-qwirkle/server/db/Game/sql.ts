@@ -1,29 +1,17 @@
-export const REGISTER_SQL = `
-INSERT INTO account (account_id, player_id, username, password, created)
-VALUES ($1, $2, $3, $4, $5)
-RETURNING account_id, player_id, username, password, created
-`;
-
 export const FIND_BY_USERNAME_SQL = `
 SELECT * FROM account WHERE username = $1
 `;
 
-export const CREATE_LOBBY = `
-INSERT INTO lobby 
-DEFAULT VALUES 
-RETURNING $1
-`;
-
 export const CREATE_GAME = `
-INSERT INTO game (player_id)
-VALUES ($2)
-RETURNING *
+INSERT INTO game
+DEFAULT VALUES
+RETURNING $1
 `;
 
 // check if it works
 export const ADD_PLAYER = `
-INSERT INTO player (lobby_id, player_id)
-VALUES ($1, $2)
+INSERT INTO player (lobby_id, account_id)
+VALUES ($1, $5)
 RETURNING 
   lobby_id AS id, 
   (SELECT $4 FROM lobby WHERE id = $1) AS player_count,
@@ -70,7 +58,7 @@ RETURNING
   SELECT tile_amount FROM tile_bag WHERE tile_bag.tile_bag_id = game.()
 `;
 
-export const UPDATE_DRAW_TURN = `
+export const UPDATE_TURN = `
 UPDATE game_users 
 SET last_draw_turn = (SELECT turn FROM games WHERE id = $1) 
 WHERE game_id = $1 AND user_id = $2
@@ -95,14 +83,14 @@ WHERE game_cards.user_id=$1
 ORDER BY position DESC
 `;
 
-export const GET_LAST_DRAW_TURN = `
+export const GET_LAST_TURN = `
 SELECT last_draw_turn 
 FROM game_users 
 WHERE game_id=$1 
   AND user_id=$2
 `;
 
-export const UPDATE_PLAYER_DRAW_TURN = `
+export const UPDATE_PLAYER_TURN = `
 UPDATE game_users 
 SET last_draw_turn = (SELECT turn FROM games WHERE id=$1) 
 WHERE game_id=$1 

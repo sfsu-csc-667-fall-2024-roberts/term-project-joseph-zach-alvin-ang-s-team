@@ -25,7 +25,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(process.cwd(), "src", "public")));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "client")));
 app.use(cookieParser());
 //app.use(flash());
 //app.use(session());

@@ -12,10 +12,7 @@ export const canPlayerDraw = async (
 
   // modify these functions
   const { turn: currentGameTurn } = await Game.getTurn(gameId);
-  const { last_draw_turn: lastDrawTurn } = await Game.getLastDrawTurn(
-    gameId,
-    userId,
-  );
+  const { last_turn: lastDrawTurn } = await Game.getLastTurn(gameId, userId);
   const socket = request.app.get("io");
 
   if (currentGameTurn === lastDrawTurn) {
